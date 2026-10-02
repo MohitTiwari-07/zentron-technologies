@@ -1,0 +1,676 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="{{ meta_description|default:'Zentron Technologies — Dubai licensed IT & digital solutions company.' }}"
+    >
+
+    <link
+        rel="canonical"
+        href="{{ request.build_absolute_uri }}"
+    >
+
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
+
+    <meta
+        property="og:title"
+        content="{{ page_title|default:'Zentron Technologies' }}"
+    >
+
+    <meta
+        property="og:description"
+        content="{{ meta_description|default:'Digital solutions for UAE businesses.' }}"
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="{{ request.build_absolute_uri }}"
+    >
+
+
+    <title>
+        {{ page_title|default:'Zentron Technologies' }}
+    </title>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/main.css' %}"
+    >
+    <link rel="stylesheet" href="{% static 'css/portfolio.css' %}">
+
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link
+        rel="icon"
+        href="{% static 'images/favicon.svg' %}"
+        type="image/svg+xml"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     GLOBAL BACKGROUND
+========================================================= -->
+
+<div class="page-noise"></div>
+
+<div class="cursor-orb"></div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header
+    class="site-header"
+    id="header"
+>
+
+    <div class="container nav">
+
+
+        <!-- LOGO -->
+
+        <a
+            class="logo"
+            href="{% url 'home' %}"
+            aria-label="Zentron Technologies"
+        >
+
+            <span class="logo-mark">
+                Z
+            </span>
+
+
+            <span class="logo-word">
+
+                ZENTRON
+
+                <small>
+                    TECHNOLOGIES
+                </small>
+
+            </span>
+
+        </a>
+
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="menu-toggle"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            type="button"
+        >
+
+            <i></i>
+
+            <i></i>
+
+        </button>
+
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="nav-links">
+
+
+            <a href="{% url 'home' %}#about">
+                About
+            </a>
+
+
+            <a href="{% url 'services' %}">
+                Services
+            </a>
+
+            <a href="{% url 'portfolio' %}">Portfolio</a>
+            
+            <a href="{% url 'home' %}#process">
+                Process
+            </a>
+
+
+            <a href="{% url 'industries' %}">
+                Industries
+            </a>
+
+
+            <a href="{% url 'packages' %}">
+                Packages
+            </a>
+
+
+            <a
+                class="nav-button"
+                href="{% url 'contact' %}"
+            >
+
+                Let's Talk
+
+                <span>
+                    ↗
+                </span>
+
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main>
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+
+        <!-- COMPANY -->
+
+        <div>
+
+            <a
+                class="logo footer-logo"
+                href="{% url 'home' %}"
+            >
+
+                <span class="logo-mark">
+                    Z
+                </span>
+
+
+                <span class="logo-word">
+
+                    ZENTRON
+
+                    <small>
+                        TECHNOLOGIES
+                    </small>
+
+                </span>
+
+            </a>
+
+
+            <p class="footer-text">
+
+                {{ site_settings.footer_text|default:'Helping businesses build a stronger online presence through websites, branding, marketing, and digital support.' }}
+
+            </p>
+
+        </div>
+
+
+
+        <!-- EXPLORE -->
+
+        <div>
+
+            <p class="footer-label">
+                Explore
+            </p>
+
+
+            <a href="{% url 'about' %}">
+                About
+            </a>
+
+
+            <a href="{% url 'services' %}">
+                Services
+            </a>
+
+
+            <a href="{% url 'packages' %}">
+                Packages
+            </a>
+
+
+            <a href="{% url 'industries' %}">
+                Industries
+            </a>
+
+        </div>
+
+
+
+        <!-- CONTACT -->
+
+        <div>
+
+            <p class="footer-label">
+                Contact
+            </p>
+
+
+            <a
+                href="tel:{{ site_settings.phone|default:'+971525122024' }}"
+            >
+
+                {{ site_settings.phone|default:'+971 52 512 2024' }}
+
+            </a>
+
+
+            <a
+                href="mailto:{{ site_settings.email|default:'info@zentron.ae' }}"
+            >
+
+                {{ site_settings.email|default:'info@zentron.ae' }}
+
+            </a>
+
+
+            <span>
+
+                {{ site_settings.address|default:'Dubai, UAE' }}
+
+            </span>
+
+        </div>
+
+
+
+        <!-- START PROJECT -->
+
+        <div>
+
+            <p class="footer-label">
+                Start a project
+            </p>
+
+
+            <p>
+                Tell us what you want to build,
+                improve or grow.
+            </p>
+
+
+            <a
+                class="footer-cta"
+                href="{% url 'contact' %}"
+            >
+
+                Get a Quote
+
+                <span>
+                    ↗
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="container footer-bottom">
+
+        <span>
+
+            © {% now 'Y' %}
+            Zentron Technologies.
+            All rights reserved.
+
+        </span>
+
+
+        <span>
+
+            Dubai, UAE · zentron.ae
+
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     WHATSAPP FLOATING BUTTON
+========================================================= -->
+
+<a
+    class="wa-float"
+    href="https://wa.me/{{ site_settings.whatsapp|default:'971525122024' }}"
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat on WhatsApp"
+>
+
+    <span class="wa-pulse"></span>
+
+    <span class="wa-icon">
+        ✆
+    </span>
+
+</a>
+
+
+
+<!-- =========================================================
+     MAIN JAVASCRIPT
+========================================================= -->
+
+<script src="{% static 'js/main.js' %}"></script>
+
+
+{% block extra_js %}
+
+{% endblock %}
+
+
+
+<!-- =========================================================
+     MOBILE MENU + HEADER EFFECT
+========================================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        const menuButton =
+            document.querySelector(".menu-toggle");
+
+        const navigation =
+            document.querySelector(".nav-links");
+
+
+        if (menuButton && navigation) {
+
+            menuButton.addEventListener(
+                "click",
+                function () {
+
+                    navigation.classList.toggle(
+                        "menu-open"
+                    );
+
+
+                    menuButton.classList.toggle(
+                        "active"
+                    );
+
+
+                    const opened =
+                        navigation.classList.contains(
+                            "menu-open"
+                        );
+
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        opened
+                    );
+
+                }
+            );
+
+
+            /* Close menu after click */
+
+            navigation
+                .querySelectorAll("a")
+                .forEach(
+                    function (link) {
+
+                        link.addEventListener(
+                            "click",
+                            function () {
+
+                                navigation.classList.remove(
+                                    "menu-open"
+                                );
+
+                                menuButton.classList.remove(
+                                    "active"
+                                );
+
+                                menuButton.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+        }
+
+
+
+        /* =========================
+           HEADER SCROLL EFFECT
+        ========================= */
+
+        const header =
+            document.querySelector(".site-header");
+
+
+        function updateHeader() {
+
+            if (!header) return;
+
+
+            if (window.scrollY > 30) {
+
+                header.classList.add(
+                    "header-scrolled"
+                );
+
+            } else {
+
+                header.classList.remove(
+                    "header-scrolled"
+                );
+
+            }
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            updateHeader,
+            { passive: true }
+        );
+
+
+        updateHeader();
+
+
+
+        /* =========================
+           CURSOR GLOW
+        ========================= */
+
+        const cursor =
+            document.querySelector(".cursor-orb");
+
+
+        if (
+            cursor &&
+            window.matchMedia(
+                "(pointer:fine)"
+            ).matches
+        ) {
+
+            window.addEventListener(
+                "mousemove",
+                function (event) {
+
+                    cursor.style.transform =
+                        `
+                        translate3d(
+                            ${event.clientX}px,
+                            ${event.clientY}px,
+                            0
+                        )
+                        translate(-50%, -50%)
+                        `;
+
+                }
+            );
+
+        }
+
+
+
+        /* =========================
+           SMOOTH ANCHOR SCROLL
+        ========================= */
+
+        document
+            .querySelectorAll(
+                'a[href^="#"]'
+            )
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function (event) {
+
+                            const targetId =
+                                this.getAttribute(
+                                    "href"
+                                );
+
+
+                            if (
+                                !targetId ||
+                                targetId === "#"
+                            ) {
+                                return;
+                            }
+
+
+                            const target =
+                                document.querySelector(
+                                    targetId
+                                );
+
+
+                            if (target) {
+
+                                event.preventDefault();
+
+
+                                target.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start"
+                                });
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .zt-demo-page {
+        min-height: 100vh;
+        padding: 140px 4vw 70px;
+        background:
+            radial-gradient(circle at 15% 20%, rgba(0, 220, 255, .08), transparent 30%),
+            radial-gradient(circle at 85% 70%, rgba(130, 70, 255, .08), transparent 30%),
+            #050810;
+        color: #fff;
+    }
+
+    .zt-demo-wrap {
+        width: min(1500px, 100%);
+        margin: 0 auto;
+    }
+
+    .zt-demo-top {
+        margin-bottom: 40px;
+    }
+
+    .zt-demo-back {
+        display: inline-flex;
+        margin-bottom: 28px;
+        color: rgba(255,255,255,.65);
+        text-decoration: none;
+        font-size: 14px;
+        transition: .3s ease;
+    }
+
+    .zt-demo-back:hover {
+        color: #fff;
+        transform: translateX(-5px);
+    }
+
+    .zt-demo-category {
+        display: block;
+        margin-bottom: 12px;
+        color: #6deaff;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+    }
+
+    .zt-demo-title {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(42px, 6vw, 82px);
+        line-height: .95;
+        letter-spacing: -.05em;
+    }
+
+    .zt-demo-description {
+        max-width: 650px;
+        margin: 20px 0 0;
+        color: rgba(255,255,255,.6);
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+    .zt-demo-preview {
+        width: 100%;
+        margin-top: 55px;
+        padding: 1px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 24px;
+        background: rgba(255,255,255,.04);
+        box-shadow:
+            0 35px 100px rgba(0,0,0,.55),
+            0 0 60px rgba(70,190,255,.06);
+        animation: ztDemoReveal .8s ease both;
+    }
+
+    .zt-demo-preview img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        border-radius: 23px;
+        object-fit: contain;
+    }
+
+    .zt-demo-empty {
+        min-height: 500px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 24px;
+    }
+
+    .zt-demo-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin-top: 28px;
+        color: rgba(255,255,255,.45);
+        font-size: 12px;
+        letter-spacing: .12em;
+    }
+
+    .zt-demo-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 20px;
+        border: 1px solid rgba(255,255,255,.16);
+        border-radius: 100px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: normal;
+        transition: .3s ease;
+    }
+
+    .zt-demo-cta:hover {
+        background: #fff;
+        color: #050810;
+        transform: translateY(-3px);
+    }
+
+    @keyframes ztDemoReveal {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 700px) {
+
+        .zt-demo-page {
+            padding: 110px 16px 45px;
+        }
+
+        .zt-demo-title {
+            font-size: 46px;
+        }
+
+        .zt-demo-preview {
+            margin-top: 35px;
+            border-radius: 16px;
+        }
+
+        .zt-demo-preview img {
+            border-radius: 15px;
+        }
+
+        .zt-demo-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .zt-demo-preview {
+            animation: none;
+        }
+    }
+</style>
+
+
+<section class="zt-demo-page">
+
+    <div class="zt-demo-wrap">
+
+        <div class="zt-demo-top">
+
+            <a
+                href="{% url 'portfolio' %}"
+                class="zt-demo-back"
+            >
+                ← Back to Portfolio
+            </a>
+
+            <span class="zt-demo-category">
+                {{ project.category }}
+            </span>
+
+            <h1 class="zt-demo-title">
+                {{ project.title }}
+            </h1>
+
+            <p class="zt-demo-description">
+                {{ project.short_description }}
+            </p>
+
+        </div>
+
+
+        {% if project.image %}
+
+            <div class="zt-demo-preview">
+
+                <img
+                    src="{{ project.image.url }}"
+                    alt="{{ project.title }} — Zentron Technologies portfolio preview"
+                    loading="eager"
+                >
+
+            </div>
+
+        {% else %}
+
+            <div class="zt-demo-empty">
+                <div>
+                    <h2>Preview Coming Soon</h2>
+                    <p>This portfolio preview will be added shortly.</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+
+        <div class="zt-demo-bottom">
+
+            <span>
+                ZENTRON TECHNOLOGIES
+            </span>
+
+            <a
+                href="{% url 'contact' %}"
+                class="zt-demo-cta"
+            >
+                Build a similar website ↗
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

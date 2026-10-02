@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="portfolio-page">
+
+    <div class="portfolio-page-bg">
+        <div class="portfolio-glow portfolio-glow-1"></div>
+        <div class="portfolio-glow portfolio-glow-2"></div>
+        <div class="portfolio-grid"></div>
+    </div>
+
+    <div class="container portfolio-container">
+
+        <div class="portfolio-heading">
+            <span class="section-kicker">OUR WORK</span>
+
+            <h1>
+                Websites built for
+                <span>real businesses.</span>
+            </h1>
+
+            <p>
+                Explore website design concepts created by Zentron Technologies
+                for different industries and business needs across the UAE.
+            </p>
+        </div>
+
+
+        <div class="portfolio-grid-cards">
+
+  {% for project in portfolios %}
+<a href="{% url 'portfolio_detail' project.slug %}" class="zt-portfolio-card reveal">
+
+    <div class="zt-portfolio-image">
+        {% if project.image %}
+            <img src="{{ project.image.url }}"
+                 alt="{{ project.title }}"
+                 loading="lazy">
+        {% endif %}
+
+        <div class="zt-portfolio-overlay">
+            <span>VIEW PROJECT</span>
+            <b>↗</b>
+        </div>
+    </div>
+
+    <div class="zt-portfolio-info">
+        <span class="zt-portfolio-category">
+            {{ project.category }}
+        </span>
+
+        <h3>{{ project.title }}</h3>
+
+        <p>{{ project.short_description }}</p>
+    </div>
+
+</a>
+{% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
