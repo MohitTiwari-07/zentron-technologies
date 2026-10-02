@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.insert(0, "/home/zentyepp/zentron")
+sys.path.insert(0, "/home/zentyepp/zentron_repo")
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 
